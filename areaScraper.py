@@ -4,22 +4,13 @@
 
 from bs4 import BeautifulSoup
 import requests
+import re
 
-soup = BeautifulSoup(requests.get("http://www.craigslist.org/about/sites").text)
+soup = BeautifulSoup(requests.get("http://www.craigslist.org/about/sites").text, "html.parser")
 
-placesDict = {}
 
-for state in soup.find_all("h4"):
-	areaList = []
-	stateStr = state.text
-	for area in state.next_sibling.next_sibling:
-		if area != '\n':
-			areaList.append(area.string)
-	placesDict[stateStr] = areaList
-
-#print(placesDict)
-
-print(placesDict['Alabama'])
-print(placesDict['Oregon'])
-print(placesDict['Texas'])
-
+for columnDiv  in soup.h1.next_sibling.next_sibling:
+	for state in columnDiv.next_sibling.next_sibling:
+		for city in state:
+			print(city)
+print("\n----Done----\n\n")

@@ -1,6 +1,5 @@
 Craigslist Scraper
 =================
-by Marshall Ehlinger
 
 What is this?
 -----
@@ -15,6 +14,7 @@ DEPENDENCIES
 * Python3 3.4.3
 * Beautiful Soup 4.4.0
 * Requests 2.7.0
+
 The results of "pip freeze" inside of the virtualenv are available under requirements.txt
 
 
