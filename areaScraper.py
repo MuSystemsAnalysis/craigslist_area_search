@@ -25,4 +25,3 @@ def getCities():
 
 	return(placesDict)
 
-getCities()
