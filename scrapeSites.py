@@ -12,16 +12,17 @@ import re
 
 def getCities():
 
-	fh = open("sites.htm", "r")
-	soup = BeautifulSoup(fh, "html.parser")
-	placesDict = {}
+	with open("sites.htm") as sites:
+		fh = sites.read()
+		soup = BeautifulSoup(fh, "html.parser")
+		placesDict = {}
 
-	for columnDiv in soup.h1.next_sibling.next_sibling:
-		for state in columnDiv:
-			for city in state:
-				m = (re.search('<li><a href="(.+)">(.+)</a>', str(city)))
-				if m:			
-					placesDict[m.group(2)] = m.group(1)
+		for columnDiv in soup.h1.next_sibling.next_sibling:
+			for state in columnDiv:
+				for city in state:
+					m = (re.search('<li><a href="(.+)">(.+)</a>', str(city)))
+					if m:			
+						placesDict[m.group(2)] = m.group(1)
 
 	return(placesDict)
 
