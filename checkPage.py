@@ -3,18 +3,19 @@
 import urllib.request
 import re
 
-def areThereResults( agghhh ):
+def thereAreResults(searchUrl):
 	#Create the soup object from the HTML data
-	page = urllib.request.urlopen(agghhh).read()
+	page = urllib.request.urlopen(searchUrl).read()
 		
 	if not re.findall(b'no results', page):
-		print("There was something there.")
+		#print("There was something there.")
 		return True
 		
 	if re.findall(b'no results', page):
-		print("No results were found.")
+		#print("No results were found.")
 		return False
+
 if __name__=="__main__":		
 	argh = 'http://elmira.craigslist.org/search/sss?sort=rel&query=gimp%20suits'
 
-	areThereResults( argh )
+	thereAreResults( argh )
